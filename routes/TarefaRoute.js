@@ -17,11 +17,4 @@ router.get('/obterTarefa/:id', obterTarefa);
 router.put('/atualizarTarefa/:id', atualizarTarefa);
 router.delete('/deletarTarefa/:id', deletarTarefa);
 
-router.use((req, res) => {
-    res.status(404).json({
-        erro: 'Rota não encontrada',
-        caminho: req.originalUrl
-    });
-});
-
 export default router;

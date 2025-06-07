@@ -12,11 +12,4 @@ router.post('/criarAdmin', criarAdmin);
 router.delete('/deletarAdmin/:id', deletarAdmin);
 router.put('/atualizarAdmin/:id', atualizarAdmin);
 
-router.use((req, res) => {
-    res.status(404).json({
-        erro: 'Rota não encontrada',
-        caminho: req.originalUrl
-    });
-});
-
 export default router;
