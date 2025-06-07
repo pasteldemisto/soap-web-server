@@ -19,8 +19,19 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://soap-web-client-omega.vercel.app'
+];
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://soap-web-client.vercel.app'], 
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS não permitido para esta origem'));
+    }
+  },
   credentials: true,
 }))
 
